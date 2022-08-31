@@ -12,16 +12,18 @@ public class Hashmaps {
             //System.out.println("THisnlake");
         }};
 
-
         var myValues = Map.of(
                 4, "AB",
                 5, "BC",
                 6, "AB",
                 7, "SK"
         );
+        var y =9;
+        var h = new Thread();
         String ourDict = "";
         //System.out.println(myValues.containsValue("AB"));
         //System.out.println(student);
+
         for(Integer value: myValues.keySet()) {
             if (myValues.get(value).equals("AB")){
                 ourDict += value+":"+myValues.get(value)+",";
