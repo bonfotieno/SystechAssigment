@@ -30,10 +30,10 @@ class ThreadFindMax extends Thread{
 public class FindMax {
     static int[] values = new int[88];
     public static void main(String[] args) {
-
         for (int i =0; i< values.length;i++){
             values[i]=new Random().nextInt(4,90);
         }
+        System.out.println(Arrays.toString(values));
         ThreadFindMax[] TFindMax = new ThreadFindMax[4];
         TFindMax[0] = new ThreadFindMax(0,values.length/4);
         TFindMax[1] = new ThreadFindMax(values.length/4, (2*values.length)/4);
@@ -49,7 +49,6 @@ public class FindMax {
                     }
             }
         }
-
         System.out.println("Max:"+max);
     }
 }
