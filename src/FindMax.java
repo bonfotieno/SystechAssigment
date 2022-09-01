@@ -42,18 +42,10 @@ public class FindMax {
         int max = TFindMax[0].getMax();
         for (ThreadFindMax j : TFindMax) {
             j.start();
-
             while(j.getState()== Thread.State.RUNNABLE){
                 if (j.getMax()>max){
                     max = j.getMax();
                     }
-            }
-        }
-        for (ThreadFindMax j : TFindMax) {
-            try {
-                j.join();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
             }
         }
 
