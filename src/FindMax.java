@@ -30,6 +30,7 @@ class ThreadFindMax extends Thread{
 public class FindMax {
     static int[] values = new int[88];
     public static void main(String[] args) {
+
         for (int i =0; i< values.length;i++){
             values[i]=new Random().nextInt(4,90);
         }
@@ -42,7 +43,7 @@ public class FindMax {
         int max = TFindMax[0].getMax();
         for (ThreadFindMax j : TFindMax) {
             j.start();
-            while(j.getState()== Thread.State.RUNNABLE){
+            while(j.getState()==Thread.State.RUNNABLE){
                 if (j.getMax()>max){
                     max = j.getMax();
                     }
