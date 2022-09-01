@@ -1,20 +1,36 @@
 import java.util.Arrays;
 import java.util.Random;
 
-class ThreadFindMax extends  Thread{
-    @Override
-    public void run() {
-        int max = FindMax.values[0];
-        for (int j : FindMax.values) {
-            if (j > max)
-                max = j;
-        }
-        System.out.println("Max:"+max);
+class ThreadFindMax extends Thread{
+    private int start;
+    private int end;
+    private int max;
+    public ThreadFindMax(int start, int end){
+        this.start = start;
+        this.end = end;
+        this.max = -1;
     }
 
-    public void getMax(){
-        System.out.println("Am running");
+    public int getMax() {
+        return this.max;
     }
+
+    @Override
+    public void run() {
+        this.max = FindMax.values[0];
+        for (int j=start; j < end; j++) {
+            if (FindMax.values[j] > this.max)
+                this.max = FindMax.values[j];
+        }
+
+        System.out.println("Max inside:"+this.max);
+    }
+
+//    public int getMax(){
+//        this.start();
+//        System.out.println("Am running");
+//        return 34;
+//    }
 }
 
 public class FindMax {
@@ -23,14 +39,30 @@ public class FindMax {
         for (int i =0; i< values.length;i++){
             values[i]=new Random().nextInt(4,90);
         }
-        Thread t1 = new ThreadFindMax();
-        Thread t2 = new ThreadFindMax();
-        Thread t3 = new ThreadFindMax();
-        Thread t4 = new ThreadFindMax();
-        t1.start();
-        t2.start();
-        t3.start().getMax();
-        t4.start();
-        System.out.println(Arrays.toString(values));
+        ThreadFindMax[] TFindMax = new ThreadFindMax[4];
+        TFindMax[0] = new ThreadFindMax(0,values.length/4);
+        TFindMax[1] = new ThreadFindMax(values.length/4, (2*values.length)/4);
+        TFindMax[2] = new ThreadFindMax((2*values.length)/4, (3 * values.length) / 4);
+        TFindMax[3] = new ThreadFindMax((3 * values.length) / 4, values.length);
+
+        int max = TFindMax[0].getMax();
+        for (ThreadFindMax j : TFindMax) {
+            j.start();
+
+            while(j.getState()== Thread.State.RUNNABLE){
+                if (j.getMax()>max){
+                    max = j.getMax();
+                    }
+            }
+        }
+        for (ThreadFindMax j : TFindMax) {
+            try {
+                j.join();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        System.out.println("Max:"+max);
     }
 }
