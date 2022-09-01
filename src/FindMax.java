@@ -23,14 +23,8 @@ class ThreadFindMax extends Thread{
                 this.max = FindMax.values[j];
         }
 
-        System.out.println("Max inside:"+this.max);
+        System.out.println("Max inside Thread ID "+this.getId()+" is: "+this.max);
     }
-
-//    public int getMax(){
-//        this.start();
-//        System.out.println("Am running");
-//        return 34;
-//    }
 }
 
 public class FindMax {
