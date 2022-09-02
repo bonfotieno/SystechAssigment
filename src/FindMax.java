@@ -21,12 +21,16 @@ class ThreadFindMax extends Thread{
             if (FindMax.values[j] > this.max)
                 this.max = FindMax.values[j];
         }
+        if (this.max > FindMax.finalMax) {
+            FindMax.finalMax = this.max;
+        }
         System.out.println("Max inside Thread ID "+this.getId()+" is: "+this.max);
     }
 }
 
 public class FindMax {
     static int[] values = new int[19];
+    static int finalMax = Integer.MIN_VALUE;
     public static void main(String[] args) {
         for (int i =0; i< values.length;i++){
             values[i]=new Random().nextInt(4,20);
@@ -49,12 +53,6 @@ public class FindMax {
                 throw new RuntimeException(e);
             }
         }
-        int max = TFindMax[0].getMax();
-        for (ThreadFindMax t : TFindMax) {
-            if (t.getMax() > max) {
-                max = t.getMax();
-            }
-        }
-        System.out.println("Final Max:"+max);
+        System.out.println("Final Max:"+ finalMax);
     }
 }
