@@ -39,7 +39,6 @@ public class FindMax {
         TFindMax[2] = new ThreadFindMax((2*values.length)/4, (3 * values.length) / 4);
         TFindMax[3] = new ThreadFindMax((3 * values.length) / 4, values.length);
 
-        int max = TFindMax[0].getMax();
         for (ThreadFindMax t : TFindMax) {
             t.start();
         }
@@ -50,11 +49,12 @@ public class FindMax {
                 throw new RuntimeException(e);
             }
         }
+        int max = TFindMax[0].getMax();
         for (ThreadFindMax t : TFindMax) {
             if (t.getMax() > max) {
                 max = t.getMax();
             }
         }
-        System.out.println("Max:"+max);
+        System.out.println("Final Max:"+max);
     }
 }
