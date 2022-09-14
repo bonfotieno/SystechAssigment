@@ -1,8 +1,7 @@
 package javaDBC.services;
 import javaDBC.model.Student;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 interface IStudentDB {
@@ -14,10 +13,21 @@ interface IStudentDB {
 }
 
 class MySQLStudentDB implements IStudentDB{
+    private Connection conn;
     public MySQLStudentDB() {
     }
     private void createConnection(){
-
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/student", "root", "PASS");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            Statement stmt = conn.createStatement();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
