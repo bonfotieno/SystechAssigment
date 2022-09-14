@@ -107,7 +107,7 @@ public class StudentUI {
     public static void main(String[] args) throws SQLException, IOException {
         studentDB = new MySQLStudentDB();
         registerStudent();
-        displayStudent(7);
+        // displayStudent(7);
         displayStudents();
         deleteStudent(7);
         updateStudent();
