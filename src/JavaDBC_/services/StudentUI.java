@@ -23,7 +23,7 @@ public class StudentUI {
 
     public static void displayStudents() throws SQLException {
         System.out.println("\nAll Student Details");
-        List<Student> studentList = MySqlDB.getList();
+        List<Student> studentList = MySqlDB.getList(student);
         for (Student student : studentList) {
             System.out.println(student);
         }

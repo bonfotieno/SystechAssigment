@@ -26,7 +26,7 @@ public class MySQLdb<T extends Entity> implements ISQLdb<T> {
         stringBuilder.append(t.getTableName());
         stringBuilder.append("(");
         boolean isFirstColumn = true;
-        for (String column : t.getColumns())
+        for (String column : t.getTargetColumns())
         {
             if (!isFirstColumn)
                 stringBuilder.append(",");
@@ -61,9 +61,9 @@ public class MySQLdb<T extends Entity> implements ISQLdb<T> {
     }
 
     @Override
-    public List<T> getList() throws SQLException {
+    public List<T> getList(T t) throws SQLException {
         List<T> studentList = new ArrayList<>();
-        String query = "SELECT * FROM student;";
+        String query = "SELECT * FROM "+t.getTableName()+";";
         resultSet = executeReadQuery(query);
         while (resultSet.next()) {
             Student s = new Student();
@@ -98,6 +98,7 @@ public class MySQLdb<T extends Entity> implements ISQLdb<T> {
             System.out.println("Executed Successfully. ");
             return true;
         } catch (SQLException e) {
+            System.out.println(e);
             return false;
         }
     }
