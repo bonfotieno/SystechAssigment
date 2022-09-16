@@ -16,15 +16,15 @@ public class Assignment10 {
      * allSwap(["ax", "bx", "ay", "by", "ai", "aj", "bx", "by"]) → ["ay", "by", "ax", "bx", "aj", "ai", "by", "bx"]
      **/
     public static String[] allSwap(String[] str){
-        for (int i = 0; i < str.length; i++) {
-            if (i+1 < str.length) {
+        for (int i = 0; i < str.length; i+=2) {
+
                 if (str[i].charAt(0) == str[i+1].charAt(0)) {
                     String first = str[i];
                     String second = str[i+1];
                     str[i]=second;
                     str[i+1]=first;
                 }
-            }
+
         }
         return str;
     }
