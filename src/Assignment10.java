@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 public class Assignment10 {
@@ -13,14 +15,23 @@ public class Assignment10 {
      * allSwap(["ax", "bx", "cx", "cy", "by", "ay", "aaa", "azz"]) → ["ay", "by", "cy", "cx", "bx", "ax", "azz", "aaa"]
      * allSwap(["ax", "bx", "ay", "by", "ai", "aj", "bx", "by"]) → ["ay", "by", "ax", "bx", "aj", "ai", "by", "bx"]
      **/
-    public String[] allSwap(String[] str){
-        List<String> s = Arrays.asList(str);
-        for (int i = 0; i < s.size(); i+=2) {
-            s.subList(i,i+1);
+    public static String[] allSwap(String[] str){
+        for (int i = 0; i < str.length; i++) {
+            System.out.println(str[i+1].charAt());
+            if (i+1 < str.length) {
+                if (str[i].indexOf(0) == str[i+1].indexOf(0)) {
+                    String first = str[i];
+                    String second = str[i+1];
+                    str[i]=second;
+                    str[i+1]=first;
+                }
+            }
         }
+        return str;
     }
 
     public static void main(String[] args) {
         String[] s = {"ax", "bx", "cx", "cy", "by", "ay", "aaa", "azz"};
+        System.out.println(Arrays.toString(allSwap(s)));
     }
 }
