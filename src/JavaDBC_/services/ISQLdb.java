@@ -12,6 +12,6 @@ public interface ISQLdb<T extends Entity> {
     List<T> getList(T t) throws SQLException;
     T get(T t, int id) throws SQLException;
     boolean executeQuery(String query);
-    boolean delete(int id);
+    boolean delete(T t, int id);
     ResultSet executeReadQuery(String query) throws SQLException;
 }

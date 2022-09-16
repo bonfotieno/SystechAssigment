@@ -34,7 +34,7 @@ public class StudentUI {
     }
 
     public static void deleteStudent(int id) throws SQLException {
-        System.out.println(MySqlDB.delete(id));
+        System.out.println(MySqlDB.delete(student, id));
     }
 
     public static void updateStudent() throws SQLException, IOException {

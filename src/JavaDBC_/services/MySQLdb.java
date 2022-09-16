@@ -50,8 +50,7 @@ public class MySQLdb<T extends Entity> implements ISQLdb<T> {
             }
             isFirstColumn = false;
         }
-        stringBuilder.append(")");
-        System.out.println(stringBuilder.toString());
+        stringBuilder.append(");");
         return stringBuilder.toString();
     }
 
@@ -78,15 +77,15 @@ public class MySQLdb<T extends Entity> implements ISQLdb<T> {
 
     @Override
     public T get(T t, int id) throws SQLException {
-        String query = "SELECT * FROM student WHERE id = " + id + ";";
+        String query = "SELECT * FROM "+t.getTableName()+" WHERE id = " + id + ";";
         resultSet = executeReadQuery(query);
-//        List<String> columns = List.of();
-//        while (resultSet.next()) {
-//            T.setId(resultSet.getInt("id"));
-//            T.setIdNumber(resultSet.getInt("IdNUmber"));
-//            t.setGender(resultSet.getString("gender"));
-//            t.setName(resultSet.getString("name"));
-//        }
+        Student s = (Student) t;
+        while (resultSet.next()) {
+            s.setId(resultSet.getInt("id"));
+            s.setIdNumber(resultSet.getInt("IdNUmber"));
+            s.setGender(resultSet.getString("gender"));
+            s.setName(resultSet.getString("name"));
+        }
         return t;
     }
 
@@ -98,14 +97,14 @@ public class MySQLdb<T extends Entity> implements ISQLdb<T> {
             System.out.println("Executed Successfully. ");
             return true;
         } catch (SQLException e) {
-            System.out.println(e);
+            System.out.println(e.getCause().toString());
             return false;
         }
     }
 
     @Override
-    public boolean delete(int id) {
-        String query = "DELETE FROM student WHERE id = " + id;
+    public boolean delete(T t, int id) {
+        String query = "DELETE FROM "+t.getTableName()+" WHERE id = " + id;
         return executeQuery(query);
     }
 
