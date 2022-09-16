@@ -17,9 +17,8 @@ public class Assignment10 {
      **/
     public static String[] allSwap(String[] str){
         for (int i = 0; i < str.length; i++) {
-            System.out.println(str[i+1].charAt());
             if (i+1 < str.length) {
-                if (str[i].indexOf(0) == str[i+1].indexOf(0)) {
+                if (str[i].charAt(0) == str[i+1].charAt(0)) {
                     String first = str[i];
                     String second = str[i+1];
                     str[i]=second;
