@@ -56,7 +56,8 @@ public class MySQLdb<T extends Entity> implements ISQLdb<T> {
 
     @Override
     public String createUpdateQuery(T t) {
-        return null; //"UPDATE student SET name = \"" + t.getName() + "\", gender = \"" + t.getGender() + "\", idNumber = " + t.getIdNumber() + " WHERE id = " + student.getId() + ";";
+        Student s = (Student) t;
+        return "UPDATE student SET name = \"" + s.getName() + "\", gender = \"" + s.getGender() + "\", idNumber = " + s.getIdNumber() + " WHERE id = " + s.getId() + ";";
     }
 
     @Override
