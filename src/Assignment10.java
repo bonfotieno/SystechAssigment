@@ -21,7 +21,6 @@ public class Assignment10 {
             {
                 int p=map.get(c);
                 map.remove(c);
-                ;
                 result[i]=result[p];
                 result[p]=strings[i];
             }
