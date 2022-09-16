@@ -8,7 +8,7 @@
     maxTriple([5, 2, 3]) → 5
  */
 
-public class assignment6 {
+public class Assignment6 {
     public static void main(String[] args) {
         int[] array_int = {23, 45, 56, 67, 23, 45, 50};
         System.out.println(Math.max(Math.max(array_int[0],array_int[array_int.length/2]),array_int[array_int.length-1]));

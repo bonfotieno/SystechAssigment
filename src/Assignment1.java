@@ -6,7 +6,7 @@
  Otherwise, return the original string unchanged.
  */
 
-public class assignment1 {
+public class Assignment1 {
     public static void main(String[] args) {
         String word2 = "He";
         System.out.println(without2(word2));

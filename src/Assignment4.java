@@ -9,6 +9,6 @@
     startWord("hippo", "i") → "h"
  */
 
-public class assignment4 {
+public class Assignment4 {
 
 }

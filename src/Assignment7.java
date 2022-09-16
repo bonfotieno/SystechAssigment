@@ -8,7 +8,7 @@
  */
 
 
-public class assignment7 {
+public class Assignment7 {
     public static void main(String[] args) {
         int[] array1 = {56, 78, 89, 45, 45};
         int[] array2 = {67, 78, 56, 45, 34};

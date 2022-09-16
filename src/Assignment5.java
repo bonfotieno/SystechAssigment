@@ -12,7 +12,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class assignment5 {
+public class Assignment5 {
 
     public static void main(String[] args) {
         ArrayList<Integer> myList = new ArrayList<Integer>(

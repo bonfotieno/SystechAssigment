@@ -1,4 +1,4 @@
-public class reverse {
+public class Reverse {
     public static void main(String[] args) {
         String word = new String("This word");
         System.out.println(reverse_str(word));
